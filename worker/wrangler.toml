@@ -1,0 +1,19 @@
+name = "ipo-auto-trial"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# ダウンロードURL（GitHub Releasesの非公開URLに差し替え）
+DOWNLOAD_URL = "https://github.com/YOUR_USER/YOUR_REPO/releases/download/v1.0.0/IPOAuto-Setup.exe"
+# 送信元メールアドレス（本番では独自ドメインに変更）
+FROM_EMAIL = "onboarding@resend.dev"
+FROM_NAME = "IPO Auto"
+# フロントエンドのオリジン（CORS用、GitHub Pagesに変更）
+ALLOWED_ORIGIN = "*"
+
+# KV namespace for license keys
+# 作成コマンド: npx wrangler kv namespace create LICENSES
+# 下記IDはダミー。実際のnamespace作成後に差し替えてください
+[[kv_namespaces]]
+binding = "LICENSES"
+id = "8d3108f798b941878d39413581bdec0d"
