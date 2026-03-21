@@ -525,7 +525,7 @@
         <h2 class="section-title">シンプルな<span class="highlight">買い切り</span>価格</h2>
         <p class="section-desc">月額費用なし。一度の購入で永久にご利用いただけます。</p>
       </div>
-      <div class="pricing-cards three-col">
+      <div class="pricing-cards">
         <div class="pricing-card animate-on-scroll fade-in-up delay-1">
           <div class="pricing-header">
             <h3>1ヶ月無料トライアル</h3>
@@ -554,48 +554,13 @@
               クレジットカード不要
             </li>
           </ul>
-          <button class="btn btn-outline btn-block" onclick="document.getElementById('trialModal').classList.add('open')">無料で試してみる</button>
-        </div>
-        <div class="pricing-card animate-on-scroll fade-in-up delay-2">
-          <div class="pricing-header">
-            <h3>スタンダード</h3>
-            <p>個人投資家の方に</p>
-          </div>
-          <div class="pricing-price">
-            <span class="price-currency">&yen;</span>
-            <span class="price-amount">19,800</span>
-            <span class="price-period">買い切り</span>
-          </div>
-          <ul class="pricing-features">
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              対応証券会社：5社まで
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              ワンクリック一括申し込み
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              IPOスケジュール取得
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Telegramから申込指示
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              1年間の無料アップデート
-            </li>
-          </ul>
-          <!-- スタンダード購入: Stripe Payment Link に差し替え -->
-          <a href="https://buy.stripe.com/YOUR_STANDARD_PAYMENT_LINK" class="btn btn-outline btn-block" target="_blank" rel="noopener">購入する</a>
+          <button class="btn btn-outline btn-block" onclick="document.getElementById('trialModal').classList.add('open')">1ヶ月間フル機能を無料で試す</button>
         </div>
         <div class="pricing-card featured animate-on-scroll fade-in-up scale-in">
-          <div class="pricing-popular">一番人気</div>
+          <div class="pricing-popular">買い切り</div>
           <div class="pricing-header">
-            <h3>プロ</h3>
-            <p>本気でIPO投資をする方に</p>
+            <h3>ワンクリIPO</h3>
+            <p>すべての機能を永久に</p>
           </div>
           <div class="pricing-price">
             <span class="price-currency">&yen;</span>
@@ -605,7 +570,7 @@
           <ul class="pricing-features">
             <li>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <strong>対応証券会社：無制限</strong>
+              対応証券会社：7社（順次追加予定）
             </li>
             <li>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -621,18 +586,13 @@
             </li>
             <li>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <strong>永久無料アップデート</strong>
+              無料アップデート
             </li>
             <li>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <strong>当選実績ダッシュボード</strong>
-            </li>
-            <li>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <strong>優先メールサポート</strong>
+              30日間返金保証
             </li>
           </ul>
-          <!-- プロ購入: Stripe Payment Link -->
           <a href="https://buy.stripe.com/test_28E7sL0yEgf3dundaJ2Ji00" class="btn btn-primary btn-block" target="_blank" rel="noopener">購入する</a>
         </div>
       </div>
@@ -729,7 +689,7 @@
             <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="faq-answer">
-            <p>新しいアップデートが利用可能になると、アプリ内で通知されます。ワンクリックで最新版に更新できます。プロプランは永久無料アップデートが含まれます。</p>
+            <p>新しいアップデートが利用可能になると、アプリ内で通知されます。ワンクリックで最新版に更新できます。プロプランは無料アップデートが含まれます。</p>
           </div>
         </div>
       </div>
@@ -1049,7 +1009,7 @@
           <tr><th>所在地</th><td>請求があった場合、遅滞なく開示いたします</td></tr>
           <tr><th>電話番号</th><td>請求があった場合、遅滞なく開示いたします</td></tr>
           <tr><th>メールアドレス</th><td>support@oneclick-ipo.com</td></tr>
-          <tr><th>販売価格</th><td>スタンダード：19,800円（税込）/ プロ：29,800円（税込）</td></tr>
+          <tr><th>販売価格</th><td>29,800円（税込）</td></tr>
           <tr><th>支払い方法</th><td>クレジットカード（Stripe経由）</td></tr>
           <tr><th>商品の引渡し時期</th><td>決済完了後、メールにてダウンロードリンクおよびライセンスキーを送付いたします（通常即時〜24時間以内）</td></tr>
           <tr><th>返品・キャンセル</th><td>ご購入から30日以内であれば、理由を問わず全額返金いたします。返金をご希望の場合は、メールにてご連絡ください。</td></tr>
