@@ -161,22 +161,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Trial modal ----------
-  const trialModal = document.getElementById('trialModal');
-  if (trialModal) {
-    // Close on overlay click
-    trialModal.addEventListener('click', (e) => {
-      if (e.target === trialModal) {
-        trialModal.classList.remove('open');
-      }
+  // ---------- All modals: close on overlay click / Escape ----------
+  document.querySelectorAll('.modal-overlay').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
     });
-    // Close on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && trialModal.classList.contains('open')) {
-        trialModal.classList.remove('open');
-      }
-    });
-  }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+    }
+  });
 
   // ---------- Particles ----------
   function createParticles() {
@@ -204,10 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Random color between primary and accent
       const colors = [
-        'rgba(79, 70, 229, 0.6)',
-        'rgba(124, 58, 237, 0.6)',
-        'rgba(129, 140, 248, 0.4)',
-        'rgba(167, 139, 250, 0.4)',
+        'rgba(79, 70, 229, 0.3)',
+        'rgba(124, 58, 237, 0.3)',
+        'rgba(99, 102, 241, 0.2)',
+        'rgba(139, 92, 246, 0.2)',
       ];
       particle.style.background = colors[Math.floor(Math.random() * colors.length)];
 
@@ -260,5 +255,35 @@ async function handleTrialSubmit() {
     btn.innerHTML = '<span>ダウンロードリンクを受け取る</span>';
     btn.disabled = false;
     alert('送信に失敗しました。もう一度お試しください。');
+  }
+}
+
+// ---------- Contact form handler (global) ----------
+async function handleContactSubmit() {
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('contactSuccess');
+  const btn = document.getElementById('contactSubmitBtn');
+  const name = document.getElementById('contactName').value;
+  const email = document.getElementById('contactEmail').value;
+  const message = document.getElementById('contactMessage').value;
+
+  btn.innerHTML = '<span>送信中...</span>';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(WORKER_URL + '/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    if (!res.ok) throw new Error();
+
+    form.style.display = 'none';
+    success.style.display = 'block';
+  } catch (e) {
+    btn.innerHTML = '<span>送信する</span>';
+    btn.disabled = false;
+    alert('送信に失敗しました。お手数ですが darkground96@gmail.com まで直接ご連絡ください。');
   }
 }

@@ -24,6 +24,11 @@ export default {
       return handleVerify(request, env);
     }
 
+    // POST /contact → 問い合わせメール送信
+    if (request.method === 'POST' && path === '/contact') {
+      return handleContact(request, env);
+    }
+
     return jsonResponse({ error: 'Not found' }, 404, env);
   },
 };
@@ -48,8 +53,8 @@ async function handleTrial(request, env) {
       body: JSON.stringify({
         from: `${env.FROM_NAME} <${env.FROM_EMAIL}>`,
         to: [email],
-        subject: '【IPO Auto】無料トライアルのダウンロードリンク',
-        html: buildTrialEmailHtml(env.DOWNLOAD_URL),
+        subject: '【ワンクリIPO】無料トライアルのダウンロードリンク',
+        html: buildTrialEmailHtml(env.DOWNLOAD_URL, env.SITE_URL || ''),
       }),
     });
 
@@ -64,6 +69,123 @@ async function handleTrial(request, env) {
     console.error('Worker error:', e);
     return jsonResponse({ error: 'Internal server error' }, 500, env);
   }
+}
+
+// ============================================================
+// Contact handler (問い合わせ)
+// ============================================================
+async function handleContact(request, env) {
+  try {
+    const { name, email, message } = await request.json();
+
+    if (!name || !email || !message) {
+      return jsonResponse({ error: 'All fields are required' }, 400, env);
+    }
+    if (!isValidEmail(email)) {
+      return jsonResponse({ error: 'Invalid email address' }, 400, env);
+    }
+
+    const resendRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `${env.FROM_NAME} <${env.FROM_EMAIL}>`,
+        to: [env.CONTACT_EMAIL || 'darkground96@gmail.com'],
+        reply_to: email,
+        subject: `【ワンクリIPO】お問い合わせ: ${name}`,
+        html: buildContactEmailHtml(name, email, message),
+      }),
+    });
+
+    if (!resendRes.ok) {
+      const err = await resendRes.text();
+      console.error('Resend error:', err);
+      return jsonResponse({ error: 'Failed to send email', detail: err }, 500, env);
+    }
+
+    // ユーザーへ受領確認メール
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `${env.FROM_NAME} <${env.FROM_EMAIL}>`,
+        to: [email],
+        subject: '【ワンクリIPO】お問い合わせを受け付けました',
+        html: buildContactAckEmailHtml(name, message),
+      }),
+    }).catch(e => console.error('Ack email error:', e));
+
+    return jsonResponse({ success: true }, 200, env);
+  } catch (e) {
+    console.error('Contact error:', e);
+    return jsonResponse({ error: 'Internal server error' }, 500, env);
+  }
+}
+
+// ============================================================
+// 問い合わせメール HTML
+// ============================================================
+function buildContactEmailHtml(name, email, message) {
+  const escapedMessage = message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+  return `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0;padding:0;background:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <div style="max-width:560px;margin:0 auto;padding:40px 24px;">
+    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:32px;">
+      <h2 style="color:#1e293b;font-size:20px;margin:0 0 24px;">お問い合わせがありました</h2>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr>
+          <td style="color:#64748b;font-size:13px;padding:8px 0;vertical-align:top;width:80px;">お名前</td>
+          <td style="color:#1e293b;font-size:14px;padding:8px 0;">${name}</td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:13px;padding:8px 0;vertical-align:top;">メール</td>
+          <td style="color:#1e293b;font-size:14px;padding:8px 0;"><a href="mailto:${email}" style="color:#4F46E5;">${email}</a></td>
+        </tr>
+      </table>
+      <div style="margin-top:16px;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+        <p style="color:#64748b;font-size:12px;margin:0 0 8px;">お問い合わせ内容</p>
+        <p style="color:#1e293b;font-size:14px;line-height:1.8;margin:0;">${escapedMessage}</p>
+      </div>
+      <p style="color:#94a3b8;font-size:12px;margin:16px 0 0;">このメールに返信すると ${email} に届きます。</p>
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
+// ============================================================
+// 問い合わせ受領確認メール HTML（ユーザー向け）
+// ============================================================
+function buildContactAckEmailHtml(name, message) {
+  const escapedMessage = message.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+  return `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0;padding:0;background:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+  <div style="max-width:560px;margin:0 auto;padding:40px 24px;">
+    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:32px;">
+      <h2 style="color:#1e293b;font-size:20px;margin:0 0 8px;">お問い合わせありがとうございます</h2>
+      <p style="color:#64748b;font-size:14px;line-height:1.8;margin:0 0 24px;">${name} 様<br>以下の内容でお問い合わせを受け付けました。内容を確認の上、折り返しご連絡いたします。</p>
+      <div style="padding:16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;">
+        <p style="color:#64748b;font-size:12px;margin:0 0 8px;">お問い合わせ内容</p>
+        <p style="color:#1e293b;font-size:14px;line-height:1.8;margin:0;">${escapedMessage}</p>
+      </div>
+      <p style="color:#94a3b8;font-size:12px;margin:16px 0 0;">※このメールは自動送信です。本メールへの返信はお控えください。</p>
+    </div>
+    <p style="color:#94a3b8;font-size:12px;text-align:center;margin-top:24px;">&copy; 2026 ワンクリIPO</p>
+  </div>
+</body>
+</html>`;
 }
 
 // ============================================================
@@ -256,7 +378,7 @@ async function sendLicenseEmail(email, licenseKey, plan, env) {
     body: JSON.stringify({
       from: `${env.FROM_NAME} <${env.FROM_EMAIL}>`,
       to: [email],
-      subject: `【IPO Auto】${planName}プラン ライセンスキーのお届け`,
+      subject: `【ワンクリIPO】${planName}プラン ライセンスキーのお届け`,
       html: buildLicenseEmailHtml(licenseKey, planName, env.DOWNLOAD_URL),
     }),
   });
@@ -278,7 +400,7 @@ function buildLicenseEmailHtml(licenseKey, planName, downloadUrl) {
 <body style="margin:0;padding:0;background:#0B0F1A;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
   <div style="max-width:560px;margin:0 auto;padding:40px 24px;">
     <div style="background:#111827;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:40px 32px;text-align:center;">
-      <h1 style="color:#fff;font-size:24px;margin:0 0 8px;">IPO Auto</h1>
+      <h1 style="color:#fff;font-size:24px;margin:0 0 8px;">ワンクリIPO</h1>
       <p style="color:#9CA3AF;font-size:14px;margin:0 0 32px;">ご購入ありがとうございます！</p>
 
       <div style="background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.2);border-radius:12px;padding:20px;margin-bottom:24px;">
@@ -291,7 +413,7 @@ function buildLicenseEmailHtml(licenseKey, planName, downloadUrl) {
         <code style="color:#A78BFA;font-size:18px;font-weight:700;letter-spacing:1px;">${licenseKey}</code>
       </div>
 
-      <p style="color:#9CA3AF;font-size:13px;margin:0 0 24px;">このキーをIPO Autoアプリに入力すると、全機能がご利用いただけます。</p>
+      <p style="color:#9CA3AF;font-size:13px;margin:0 0 24px;">このキーをワンクリIPOアプリに入力すると、全機能がご利用いただけます。</p>
 
       <a href="${downloadUrl}"
          style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;text-decoration:none;border-radius:12px;font-size:16px;font-weight:700;">
@@ -312,7 +434,7 @@ function buildLicenseEmailHtml(licenseKey, planName, downloadUrl) {
         <p style="color:#F59E0B;font-size:12px;margin:0;">ライセンスキーは大切に保管してください。再発行はサポートまでお問い合わせください。</p>
       </div>
     </div>
-    <p style="color:#4B5563;font-size:12px;text-align:center;margin-top:24px;">&copy; 2026 IPO Auto</p>
+    <p style="color:#4B5563;font-size:12px;text-align:center;margin-top:24px;">&copy; 2026 ワンクリIPO</p>
   </div>
 </body>
 </html>`;
@@ -321,7 +443,7 @@ function buildLicenseEmailHtml(licenseKey, planName, downloadUrl) {
 // ============================================================
 // トライアルメール HTML（既存）
 // ============================================================
-function buildTrialEmailHtml(downloadUrl) {
+function buildTrialEmailHtml(downloadUrl, siteUrl) {
   return `
 <!DOCTYPE html>
 <html>
@@ -329,7 +451,7 @@ function buildTrialEmailHtml(downloadUrl) {
 <body style="margin:0;padding:0;background:#0B0F1A;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
   <div style="max-width:560px;margin:0 auto;padding:40px 24px;">
     <div style="background:#111827;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:40px 32px;text-align:center;">
-      <h1 style="color:#fff;font-size:24px;margin:0 0 8px;">IPO Auto</h1>
+      <h1 style="color:#fff;font-size:24px;margin:0 0 8px;">ワンクリIPO</h1>
       <p style="color:#9CA3AF;font-size:14px;margin:0 0 32px;">無料トライアルをお申し込みいただきありがとうございます。</p>
 
       <p style="color:#F9FAFB;font-size:16px;margin:0 0 24px;">下のボタンからツールをダウンロードしてください。</p>
@@ -348,11 +470,25 @@ function buildTrialEmailHtml(downloadUrl) {
         </ol>
       </div>
 
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);">
+        <p style="color:#F59E0B;font-size:14px;font-weight:700;margin:0 0 12px;">⚠ ダウンロード・起動時にWindowsの警告が表示されます</p>
+        <p style="color:#9CA3AF;font-size:13px;line-height:1.8;margin:0 0 16px;">個人開発のソフトウェアのため、Windowsが警告を表示しますが、問題ありません。以下の手順で進めてください。</p>
+
+        <p style="color:#D1D5DB;font-size:13px;font-weight:600;margin:0 0 8px;">① ダウンロード時：「保存」をクリック</p>
+        <img src="${siteUrl}/images/download-step1.png" alt="ダウンロード警告1" style="max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.1);margin-bottom:16px;">
+
+        <p style="color:#D1D5DB;font-size:13px;font-weight:600;margin:0 0 8px;">② 確認画面：「▼」→「保持する」をクリック</p>
+        <img src="${siteUrl}/images/download-step2.png" alt="ダウンロード警告2" style="max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.1);margin-bottom:16px;">
+
+        <p style="color:#D1D5DB;font-size:13px;font-weight:600;margin:0 0 8px;">③ 起動時：「詳細情報」→「実行」をクリック</p>
+        <img src="${siteUrl}/images/download-step3.png" alt="SmartScreen警告" style="max-width:100%;border-radius:8px;border:1px solid rgba(255,255,255,0.1);margin-bottom:8px;">
+      </div>
+
       <div style="margin-top:24px;padding:12px 16px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);border-radius:8px;">
-        <p style="color:#F59E0B;font-size:12px;margin:0;">無料トライアルは2社まで対応。すべての証券会社でご利用いただくにはライセンスの購入が必要です。</p>
+        <p style="color:#F59E0B;font-size:12px;margin:0;">無料トライアルですべての証券会社をご利用いただけます。トライアル期間は1ヶ月です。</p>
       </div>
     </div>
-    <p style="color:#4B5563;font-size:12px;text-align:center;margin-top:24px;">&copy; 2026 IPO Auto</p>
+    <p style="color:#4B5563;font-size:12px;text-align:center;margin-top:24px;">&copy; 2026 ワンクリIPO</p>
   </div>
 </body>
 </html>`;

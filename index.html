@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ワンクリIPO - IPO申し込みをもっとラクに</title>
   <meta name="description" content="IPO申し込みの手間を徹底的にカット。複数証券会社への申し込みをワンクリックで完了し、当選確率を最大化。">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +31,7 @@
         <a href="#pricing">料金</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <button class="header-cta" onclick="document.getElementById('trialModal').classList.add('open')">無料で試す</button>
+      <button class="header-cta" onclick="document.getElementById('trialModal').classList.add('open')">1ヶ月無料で試す</button>
       <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="メニュー">
         <span></span><span></span><span></span>
       </button>
@@ -43,7 +44,7 @@
     <a href="#how-it-works">使い方</a>
     <a href="#pricing">料金</a>
     <a href="#faq">FAQ</a>
-    <button class="mobile-nav-cta" onclick="document.getElementById('trialModal').classList.add('open'); document.getElementById('mobileNav').classList.remove('open');">無料で試す</button>
+    <button class="mobile-nav-cta" onclick="document.getElementById('trialModal').classList.add('open'); document.getElementById('mobileNav').classList.remove('open');">1ヶ月無料で試す</button>
   </div>
 
   <!-- ========== HERO ========== -->
@@ -73,106 +74,45 @@
         <span class="gradient-text">圧倒的にラクに</span>
       </h1>
       <p class="hero-subtitle animate-on-scroll fade-in-up delay-1">
-        スマホから複数証券会社への申し込みをワンタップで完了。<br class="pc-only">
-        パスキーログイン必須の証券会社でも、追加操作不要でスムーズにログイン。
+        Telegramからメッセージを送るだけで、複数証券会社への申し込みが完結。パスキー認証の証券会社にも対応。スマホだけでIPO投資を続けられます。
       </p>
+      <div class="hero-brokers animate-on-scroll fade-in-up delay-2">
+        <span class="hero-brokers-label">対応証券会社</span>
+        <div class="hero-brokers-list">
+          <span class="broker-chip">SBI証券</span>
+          <span class="broker-chip">SMBC日興証券</span>
+          <span class="broker-chip">野村証券</span>
+          <span class="broker-chip">楽天証券</span>
+          <span class="broker-chip">マネックス証券</span>
+          <span class="broker-chip">みずほ証券</span>
+          <span class="broker-chip">東海東京証券</span>
+          <span class="broker-chip more">順次追加予定</span>
+        </div>
+      </div>
       <div class="hero-actions animate-on-scroll fade-in-up delay-2">
         <button class="btn btn-primary btn-lg" onclick="document.getElementById('trialModal').classList.add('open')">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16 8 8 0 000-16z" stroke="currentColor" stroke-width="1.5"/><path d="M8 7l5 3-5 3V7z" fill="currentColor"/></svg>
-          <span>無料で試してみる</span>
+          <span>1ヶ月間フル機能を無料で試す</span>
         </button>
         <a href="#pricing" class="btn btn-ghost btn-lg">
           <span>料金プランを見る</span>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
-      <div class="hero-stats animate-on-scroll fade-in-up delay-3">
-        <div class="stat">
-          <span class="stat-number" data-count="7">0</span><span class="stat-suffix">社</span>
-          <span class="stat-label">対応証券会社（順次追加）</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number" data-count="98">0</span><span class="stat-suffix">%</span>
-          <span class="stat-label">時間削減</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number" data-count="3500">0</span><span class="stat-suffix">人+</span>
-          <span class="stat-label">利用者数</span>
-        </div>
-      </div>
     </div>
     <div class="hero-visual animate-on-scroll zoom-in delay-2">
-      <div class="hero-mockup">
-        <div class="mockup-window">
-          <div class="mockup-titlebar">
-            <div class="mockup-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <span class="mockup-title">ワンクリIPO - ダッシュボード</span>
-          </div>
-          <div class="mockup-body">
-            <div class="mockup-sidebar">
-              <div class="mockup-nav-item active">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
-                ダッシュボード
-              </div>
-              <div class="mockup-nav-item">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                IPO一覧
-              </div>
-              <div class="mockup-nav-item">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                一括申込
-              </div>
-              <div class="mockup-nav-item">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 12l4-4 3 3 5-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                実績
-              </div>
-            </div>
-            <div class="mockup-main">
-              <div class="mockup-card-row">
-                <div class="mockup-stat-card">
-                  <span class="mockup-stat-label">本日のIPO</span>
-                  <span class="mockup-stat-value">3件</span>
-                  <span class="mockup-stat-badge up">+2 新規</span>
-                </div>
-                <div class="mockup-stat-card">
-                  <span class="mockup-stat-label">申込済み</span>
-                  <span class="mockup-stat-value">12件</span>
-                  <span class="mockup-stat-badge up">100%</span>
-                </div>
-                <div class="mockup-stat-card">
-                  <span class="mockup-stat-label">当選</span>
-                  <span class="mockup-stat-value">2件</span>
-                  <span class="mockup-stat-badge up">+45万円</span>
-                </div>
-              </div>
-              <div class="mockup-table">
-                <div class="mockup-table-header">
-                  <span>銘柄名</span><span>証券会社</span><span>状態</span>
-                </div>
-                <div class="mockup-table-row">
-                  <span class="mockup-company">テックIPO株式会社</span>
-                  <span>SBI証券</span>
-                  <span class="mockup-status done">申込完了</span>
-                </div>
-                <div class="mockup-table-row">
-                  <span class="mockup-company">グロースAI Inc.</span>
-                  <span>楽天証券</span>
-                  <span class="mockup-status done">申込完了</span>
-                </div>
-                <div class="mockup-table-row">
-                  <span class="mockup-company">DXソリューション</span>
-                  <span>マネックス</span>
-                  <span class="mockup-status pending">申込中...</span>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="hero-video">
+        <div class="hero-video-wrapper">
+          <!-- YouTube動画IDを YOUR_VIDEO_ID から実際のIDに差し替えてください -->
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/YOUR_VIDEO_ID?rel=0&modestbranding=1"
+            title="ワンクリIPO デモ動画"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
-        <div class="mockup-glow"></div>
+        <div class="hero-video-glow"></div>
       </div>
     </div>
     <div class="hero-scroll-indicator">
@@ -186,30 +126,30 @@
     <div class="container">
       <div class="section-header animate-on-scroll fade-in-up">
         <span class="section-tag">Why IPO?</span>
-        <h2 class="section-title">IPO投資は<span class="highlight">ローリスク・ハイリターン</span></h2>
-        <p class="section-desc">IPO（新規公開株）は、数ある投資の中でも非常に有利な投資手法です。</p>
+        <h2 class="section-title">IPO申し込み1回 ＝<span class="highlight"> 期待値 300〜1,000円</span><a href="#ipo-references" class="ref-mark">*</a></h2>
+        <p class="section-desc">IPO（新規公開株）の申し込みは、1回につき300〜1,000円の期待リターン。<br>外れても損はゼロ。申し込むだけで"お金が増える宝くじ"です。</p>
       </div>
       <div class="merit-grid">
         <div class="merit-card animate-on-scroll fade-in-up delay-1">
           <div class="merit-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#10B981" stroke-width="2"/><path d="M16 28l6-8 4 4 6-10" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 14h4v4" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#10B981" stroke-width="2"/><path d="M17 24h14M24 17v14" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/></svg>
           </div>
-          <h3>高い勝率</h3>
-          <p>IPOは公募価格より初値が上回るケースが多く、2024年は約7割の銘柄がプラス。購入できれば利益になる確率が非常に高い投資です。</p>
+          <h3>ポイ活より断然おトク</h3>
+          <p>ポイ活は1件あたり1〜10円程度。IPO申し込みは1回で300〜1,000円の期待値。しかも外れてもお金は減りません。手間に対するリターンが桁違いです。</p>
         </div>
         <div class="merit-card animate-on-scroll fade-in-up delay-2">
           <div class="merit-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#10B981" stroke-width="2"/><path d="M20 30V22M24 30V18M28 30V24" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#10B981" stroke-width="2"/><path d="M16 28l6-8 4 4 6-10" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 14h4v4" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3>リスクが限定的</h3>
-          <p>抽選に外れても資金は戻るだけ。当選して値上がりすれば利益、公募割れしても損失は限定的。ローリスクでリターンを狙えます。</p>
+          <h3>年3〜5回の当選実績も</h3>
+          <p>複数の証券会社から申し込みを続ければ、年に3〜5回当選する人も。1回の当選で数万円〜数十万円の利益になることも珍しくありません。</p>
         </div>
         <div class="merit-card animate-on-scroll fade-in-up delay-3">
           <div class="merit-icon">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#10B981" stroke-width="2"/><path d="M24 16v8l5 5" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#10B981" stroke-width="2"/><path d="M18 30V24M22 30V20M26 30V22M30 30V18" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/></svg>
           </div>
-          <h3>分析不要</h3>
-          <p>チャート分析や市場の知識がなくても参加可能。申し込んで抽選を待つだけのシンプルな仕組みで、投資初心者にも向いています。</p>
+          <h3>社数が多いほど有利</h3>
+          <p>IPOは応募するほど当選確率が上がる仕組み。7社から毎回申し込めば、1社だけの人と比べてチャンスは7倍。続けた人だけが勝てる世界です。</p>
         </div>
       </div>
     </div>
@@ -221,7 +161,7 @@
       <div class="section-header animate-on-scroll fade-in-up">
         <span class="section-tag">Problem</span>
         <h2 class="section-title">でも、<span class="highlight">続かない</span>のが現実。</h2>
-        <p class="section-desc">IPO投資は有効な手法なのに、<br class="sp-only">ログインや管理の複雑さから多くの人が挫折しています。</p>
+        <p class="section-desc">IPO投資は有効な手法なのに、ログインや管理の複雑さから多くの人が挫折しています。</p>
       </div>
       <div class="problem-grid">
         <div class="problem-card animate-on-scroll fade-in-up delay-1">
@@ -320,8 +260,8 @@
         <div class="feature-item reverse animate-on-scroll slide-in-right">
           <div class="feature-content">
             <div class="feature-number">02</div>
-            <h3 class="feature-title">Telegramから<br>かんたん操作</h3>
-            <p class="feature-desc">Telegramのチャットから申し込み指示を送るだけ。スマホからいつでもIPO申し込みを実行でき、結果もTelegramに届きます。</p>
+            <h3 class="feature-title">スマホだけで<br>申し込み完結</h3>
+            <p class="feature-desc">Telegramのチャットからメッセージを送るだけで、IPO申し込みがスマホだけで完結。通勤中でも休憩中でも、いつでもどこでも申し込めます。</p>
             <ul class="feature-list">
               <li>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -337,21 +277,14 @@
               </li>
               <li>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                カレンダー連携機能
+                iPhone / Android どちらからでも操作可能
               </li>
             </ul>
           </div>
           <div class="feature-visual">
-            <div class="feature-calendar">
-              <div class="cal-header">
-                <span>2026年3月</span>
-              </div>
-              <div class="cal-grid">
-                <div class="cal-day">月</div><div class="cal-day">火</div><div class="cal-day">水</div><div class="cal-day">木</div><div class="cal-day">金</div>
-                <div class="cal-date">2</div><div class="cal-date">3</div><div class="cal-date ipo-start">4<span>申込開始</span></div><div class="cal-date">5</div><div class="cal-date">6</div>
-                <div class="cal-date">9</div><div class="cal-date ipo-end">10<span>締切</span></div><div class="cal-date">11</div><div class="cal-date">12</div><div class="cal-date">13</div>
-                <div class="cal-date">16</div><div class="cal-date">17</div><div class="cal-date ipo-result">18<span>抽選日</span></div><div class="cal-date">19</div><div class="cal-date">20</div>
-              </div>
+            <div class="screenshot-phone">
+              <img src="images/telegram-bot.jpg" alt="Telegram Botの実際の操作画面 - IPO銘柄ごとに証券会社を選んでワンタップで申し込み" class="screenshot-img" loading="lazy">
+              <p class="screenshot-caption">実際のTelegram Bot操作画面</p>
             </div>
           </div>
         </div>
@@ -360,12 +293,12 @@
         <div class="feature-item animate-on-scroll slide-in-left">
           <div class="feature-content">
             <div class="feature-number">03</div>
-            <h3 class="feature-title">パスキー認証にも<br>しっかり対応</h3>
-            <p class="feature-desc">最近の証券会社はパスキー（指紋・顔認証）を導入しており、通常のツールではログインすら困難。ワンクリIPOはBitwardenと連携し、パスキー認証もスムーズにクリアして申し込みまで完了します。</p>
+            <h3 class="feature-title">最新のログイン方式<br>にも対応</h3>
+            <p class="feature-desc">最近の証券会社はパスキー（指紋・顔認証）を導入しており、従来のツールではログインすら困難。ワンクリIPOはBitwardenと連携し、パスキー認証もスムーズにクリアして申し込みまで完了します。</p>
             <ul class="feature-list">
               <li>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                パスキー導入済みの証券会社でもログイン＆申込可能
+                パスキー（指紋・顔認証）導入済みの証券会社にも対応
               </li>
               <li>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -373,7 +306,7 @@
               </li>
               <li>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                ID/パスワード認証の証券会社にも対応
+                ID/パスワード認証の証券会社にももちろん対応
               </li>
               <li>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -411,72 +344,6 @@
                 <span class="sec-label">ID/PW認証</span>
                 <span class="sec-label">ローカル保存</span>
               </div>
-            </div>
-          </div>
-        </div>
-        <!-- Feature 4: スマホ対応 -->
-        <div class="feature-item reverse animate-on-scroll slide-in-right">
-          <div class="feature-content">
-            <div class="feature-number">04</div>
-            <h3 class="feature-title">スマホから<br>いつでも申し込み</h3>
-            <p class="feature-desc">通勤中でも、休憩中でも。Telegramを開いてメッセージを送るだけでIPO申し込みが完了。PCの前にいなくても、スマホひとつで操作できます。</p>
-            <ul class="feature-list">
-              <li>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Telegramから申し込み指示を送信するだけ
-              </li>
-              <li>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                自宅PCが受け取って申し込みを実行
-              </li>
-              <li>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                外出先でも申込状況・当選結果をリアルタイム確認
-              </li>
-              <li>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4F46E5" fill-opacity="0.1"/><path d="M6 10l3 3 5-5" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                iPhone / Android 両対応
-              </li>
-            </ul>
-          </div>
-          <div class="feature-visual">
-            <div class="phone-mockup">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <div class="phone-screen">
-                  <div class="phone-header-bar">
-                    <span class="phone-app-title">ワンクリIPO</span>
-                    <span class="phone-status-dot"></span>
-                  </div>
-                  <div class="phone-notification tg-notif">
-                    <div class="phone-notif-icon tg">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14.5 1.5L1 7l4.5 2L13 3.5 7 10.5v4l2.5-2.5 3 2.5 2-13z" fill="#fff"/></svg>
-                    </div>
-                    <div class="phone-notif-body">
-                      <span class="phone-notif-title">あなた</span>
-                      <span class="phone-notif-text">テックIPOを申し込んで</span>
-                    </div>
-                  </div>
-                  <div class="phone-notification tg-notif">
-                    <div class="phone-notif-icon tg">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14.5 1.5L1 7l4.5 2L13 3.5 7 10.5v4l2.5-2.5 3 2.5 2-13z" fill="#fff"/></svg>
-                    </div>
-                    <div class="phone-notif-body">
-                      <span class="phone-notif-title">ワンクリIPO Bot</span>
-                      <span class="phone-notif-text">テックIPOの申込が全5社で完了しました</span>
-                    </div>
-                  </div>
-                  <div class="phone-card">
-                    <span class="phone-card-label">本日の申込状況</span>
-                    <div class="phone-progress-bar">
-                      <div class="phone-progress-fill" style="width:100%"></div>
-                    </div>
-                    <span class="phone-card-value">5 / 5 社 完了</span>
-                  </div>
-                  <div class="phone-action-btn">申し込みを実行</div>
-                </div>
-              </div>
-              <div class="phone-glow"></div>
             </div>
           </div>
         </div>
@@ -548,8 +415,8 @@
             <div class="step-icon">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="8" y="8" width="24" height="18" rx="3" stroke="#4F46E5" stroke-width="2"/><path d="M8 14h24M14 20h12M14 24h8" stroke="#4F46E5" stroke-width="2" stroke-linecap="round"/><circle cx="28" cy="28" r="6" fill="#4F46E5"/><path d="M26 28h4M28 26v4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
-            <h3>メールアドレスで無料トライアル</h3>
-            <p>メールアドレスを入力するだけ。ダウンロードリンクがすぐ届くので、インストールしてお試しいただけます。</p>
+            <h3>メールアドレスで1ヶ月無料トライアル</h3>
+            <p>メールアドレスを入力するだけ。ダウンロードリンクがすぐ届くので、全機能をまるごとお試しいただけます。</p>
           </div>
         </div>
         <div class="step animate-on-scroll fade-in-up delay-2">
@@ -635,68 +502,7 @@
     </div>
   </section>
 
-  <!-- ========== SOCIAL PROOF ========== -->
-  <section class="section social-proof" id="social-proof">
-    <div class="container">
-      <div class="section-header animate-on-scroll fade-in-up">
-        <span class="section-tag">Voice</span>
-        <h2 class="section-title">ユーザーの<span class="highlight">声</span></h2>
-      </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card animate-on-scroll fade-in-up delay-1">
-          <div class="testimonial-stars">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-          </div>
-          <p class="testimonial-text">"毎回8社に申し込んでいましたが、30分以上かかっていた作業がワンクリックで完了するようになりました。もう手放せません。"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">T.S</div>
-            <div>
-              <div class="author-name">T.S さん</div>
-              <div class="author-detail">会社員・IPO歴5年</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card animate-on-scroll fade-in-up delay-2">
-          <div class="testimonial-stars">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-          </div>
-          <p class="testimonial-text">"導入してから3ヶ月で2回当選！以前は年に1回あるかないかだったので、本当に驚いています。申し込み漏れがなくなったのが大きい。"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">M.K</div>
-            <div>
-              <div class="author-name">M.K さん</div>
-              <div class="author-detail">フリーランス・IPO歴3年</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card animate-on-scroll fade-in-up delay-3">
-          <div class="testimonial-stars">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B"><path d="M10 1l2.5 6H19l-5 4 2 6.5L10 14l-6 3.5 2-6.5-5-4h6.5z"/></svg>
-          </div>
-          <p class="testimonial-text">"Bitwardenで認証情報を管理しているので安心感が違う。Telegramからメッセージ送るだけで申し込みできるので、外出先でもサクッと済ませられます。"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">Y.H</div>
-            <div>
-              <div class="author-name">Y.H さん</div>
-              <div class="author-detail">エンジニア・IPO歴7年</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ========== SOCIAL PROOF (非表示) ========== -->
 
   <!-- ========== PRICING ========== -->
   <section class="section pricing" id="pricing">
@@ -709,22 +515,22 @@
       <div class="pricing-cards three-col">
         <div class="pricing-card animate-on-scroll fade-in-up delay-1">
           <div class="pricing-header">
-            <h3>無料トライアル</h3>
-            <p>まずは試してみたい方に</p>
+            <h3>1ヶ月無料トライアル</h3>
+            <p>全機能をまるごと体験</p>
           </div>
           <div class="pricing-price">
             <span class="price-currency">&yen;</span>
             <span class="price-amount">0</span>
-            <span class="price-period">無料</span>
+            <span class="price-period">/ 1ヶ月</span>
           </div>
           <ul class="pricing-features">
             <li>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              対応証券会社：2社まで
+              1ヶ月間すべての機能を無料で体験
             </li>
             <li>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              基本機能をすべて体験
+              対応証券会社すべて利用可能
             </li>
             <li>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10l4 4 6-6" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -847,7 +653,7 @@
             <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="faq-answer">
-            <p>はい。すべてのログイン情報はAES-256で暗号化し、お使いのPC内にのみ保存されます。外部サーバーへの送信は一切行いません。</p>
+            <p>はい、安全です。証券口座のID・パスワードはお使いのPC内にのみ暗号化保存（Fernet / AES-128-CBC）され、外部サーバーへ送信されることはありません。ログイン時はPC上のブラウザを立ち上げ、証券会社サイトおよびパスワード管理ツール（Bitwarden）へ自動入力します。すべてローカルPC上のブラウザ操作として完結し、手動でログインする場合と同一の手順です。なお、Telegram連携を利用する場合、申込指示や結果通知の内容はTelegram社のサーバーを経由します。</p>
           </div>
         </div>
         <div class="faq-item animate-on-scroll fade-in-up delay-1">
@@ -917,20 +723,40 @@
     </div>
   </section>
 
+  <!-- ========== REFERENCES ========== -->
+  <section class="section references" id="ipo-references">
+    <div class="container">
+      <div class="references-box">
+        <h4>* 期待値の算出根拠</h4>
+        <p>2024年のIPO全86銘柄の初値売り実績および、Web上に公開された多数の当選実績データをもとに、「初値売り平均利益 × 当選確率」で算出しています。当選確率や利益額は証券会社・銘柄により異なります。</p>
+        <ul class="references-list">
+          <li><a href="https://ipokabu.net/data/2024" target="_blank" rel="noopener">庶民のIPO - 2024年IPOデータ・ランキング</a></li>
+          <li><a href="https://www.sbineotrade.jp/ipo/record-2024.html" target="_blank" rel="noopener">SBIネオトレード証券 - 2024年IPOデータ</a></li>
+          <li><a href="https://ipokabu.net/whats/rieki.html" target="_blank" rel="noopener">庶民のIPO - IPO投資で利益を得るには</a></li>
+          <li><a href="https://96ut.com/ipo/list.php" target="_blank" rel="noopener">96ut.com - IPO初値結果一覧表</a></li>
+        </ul>
+        <div class="references-disclaimer">
+          <p>※ 期待値は過去の実績に基づく参考値であり、将来の利益を保証するものではありません。IPOは公募価格を下回る（公募割れ）場合もありますが、公募割れしやすい銘柄は簡単な事前調査で高確率で避けることができます。投資判断はご自身の責任でお願いいたします。</p>
+          <p>※ 本ツールのご利用には、自宅PCの常時起動（スリープ不可）および安定したインターネット接続が必要です。詳しくは<a href="#requirements">ご利用にあたっての注意点</a>をご確認ください。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== FINAL CTA ========== -->
   <section class="section final-cta">
     <div class="container">
       <div class="cta-box animate-on-scroll zoom-in">
         <div class="cta-bg-pattern"></div>
         <h2>IPO投資を、もっとスマートに。</h2>
-        <p>面倒な申し込み作業から解放されて、<br class="sp-only">当選確率を最大化しましょう。</p>
+        <p>面倒な申し込み作業から解放されて、当選確率を最大化しましょう。</p>
         <div class="cta-actions">
           <button class="btn btn-white btn-lg" onclick="document.getElementById('trialModal').classList.add('open')">
-            <span>無料で試してみる</span>
+            <span>1ヶ月間フル機能を無料で試す</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
-        <p class="cta-sub">メールアドレスだけで今すぐ開始 / クレジットカード不要</p>
+        <p class="cta-sub">メールアドレスだけで今すぐ開始 / クレジットカード不要 / 1ヶ月間フル機能</p>
       </div>
     </div>
   </section>
@@ -961,10 +787,10 @@
         </div>
         <div class="footer-links">
           <h4>サポート</h4>
-          <a href="#">お問い合わせ</a>
-          <a href="#">利用規約</a>
-          <a href="#">プライバシーポリシー</a>
-          <a href="#">特定商取引法に基づく表記</a>
+          <a href="#" onclick="event.preventDefault(); document.getElementById('contactModal').classList.add('open')">お問い合わせ</a>
+          <a href="#" onclick="event.preventDefault(); document.getElementById('termsModal').classList.add('open')">利用規約</a>
+          <a href="#" onclick="event.preventDefault(); document.getElementById('privacyModal').classList.add('open')">プライバシーポリシー</a>
+          <a href="#" onclick="event.preventDefault(); document.getElementById('tokushohoModal').classList.add('open')">特定商取引法に基づく表記</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -980,8 +806,8 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <div class="modal-header">
-        <h3>無料トライアルを始める</h3>
-        <p>メールアドレスを入力してください。<br>ダウンロードリンクをお送りします。</p>
+        <h3>1ヶ月間、全機能を無料で体験</h3>
+        <p>メールアドレスを入力するだけ。すぐにダウンロードリンクをお送りします。</p>
       </div>
       <form class="trial-form" id="trialForm" onsubmit="event.preventDefault(); handleTrialSubmit();">
         <div class="trial-input-wrap">
@@ -1000,8 +826,223 @@
       </div>
       <p class="modal-note">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1a6 6 0 100 12 6 6 0 000-12zm0 3v3m0 3h.01" stroke="#6B7280" stroke-width="1" stroke-linecap="round"/></svg>
-        クレジットカード不要 / 2社まで無料で利用可能
+        クレジットカード不要 / 1ヶ月無料で利用可能
       </p>
+    </div>
+  </div>
+
+  <!-- ========== CONTACT MODAL ========== -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="document.getElementById('contactModal').classList.remove('open')" aria-label="閉じる">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-header">
+        <h3>お問い合わせ</h3>
+        <p>ご質問・ご要望などお気軽にどうぞ。</p>
+      </div>
+      <form class="trial-form" id="contactForm" onsubmit="event.preventDefault(); handleContactSubmit();">
+        <div class="trial-input-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3" stroke="#6B7280" stroke-width="1.5"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="text" id="contactName" placeholder="お名前" required>
+        </div>
+        <div class="trial-input-wrap">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="#6B7280" stroke-width="1.5"/><path d="M2 6l8 5 8-5" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input type="email" id="contactEmail" placeholder="メールアドレス" required autocomplete="email">
+        </div>
+        <div class="trial-input-wrap contact-textarea-wrap">
+          <textarea id="contactMessage" placeholder="お問い合わせ内容" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="contactSubmitBtn">
+          <span>送信する</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+      <div class="trial-success" id="contactSuccess" style="display:none;">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" fill="#10B981" fill-opacity="0.1" stroke="#10B981" stroke-width="2"/><path d="M16 24l6 6 10-10" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>送信しました！</h4>
+        <p>お問い合わせありがとうございます。<br>内容を確認の上、折り返しご連絡いたします。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 利用規約モーダル ========== -->
+  <div class="modal-overlay" id="termsModal">
+    <div class="modal-box modal-box-wide">
+      <button class="modal-close" onclick="document.getElementById('termsModal').classList.remove('open')" aria-label="閉じる">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-header">
+        <h3>利用規約</h3>
+        <p>最終更新日: 2026年3月20日</p>
+      </div>
+      <div class="tokushoho-content legal-content">
+        <h4>1. 使用許諾と契約の成立</h4>
+        <p>本ソフトウェア「ワンクリIPO」（以下「本ソフトウェア」）を使用した時点で、本規約に同意したものとみなされます。本規約に同意いただけない場合は、本ソフトウェアを使用しないでください。</p>
+        <ul>
+          <li>1ライセンスにつき1台のPCでのみ使用できます。</li>
+          <li>本ソフトウェアの使用を中止する場合は、保存したファイルを全て削除することで契約は終了します。</li>
+        </ul>
+        <p>提供者は、事前の通知なく、本ソフトウェアの機能変更、一時停止、提供終了、または本契約の終了を行うことができます。これらに起因する損害について、提供者は補償の責任を負いません。</p>
+
+        <h4>2. 禁止事項</h4>
+        <ul>
+          <li>本ソフトウェアの無断複製</li>
+          <li>第三者への配布、貸与、譲渡、販売</li>
+          <li>リバースエンジニアリング、逆コンパイル、逆アセンブル</li>
+          <li>本ソフトウェアの改造、翻訳、派生物の作成</li>
+        </ul>
+
+        <h4>3. 商用利用</h4>
+        <p>本ソフトウェアは個人利用を前提としています。本ソフトウェアを利用して作成した設定データ等を営利目的で販売する場合は、別途商用契約が必要です。</p>
+
+        <h4>4. 秘密保持</h4>
+        <p>利用者は、本契約および本ソフトウェアを通じて知り得た提供者の技術情報、営業情報その他の秘密情報を第三者に開示・漏洩してはなりません。</p>
+
+        <h4>5. 証券会社との関係</h4>
+        <p>本ソフトウェアは、いかなる証券会社とも公式な提携・承認関係にありません。</p>
+        <ul>
+          <li>本ソフトウェアは非公式の個人用補助ツールです。</li>
+          <li>証券会社のウェブサイトへのアクセスは、利用者自身の責任で行ってください。</li>
+          <li>証券会社の利用規約に違反する使用は、利用者の責任となります。</li>
+          <li>証券会社の仕様変更により、本ソフトウェアが正常に動作しなくなる場合があります。</li>
+        </ul>
+
+        <h4>6. 発注確認の義務</h4>
+        <p>本ソフトウェアは、IPO申込が確実に完了することを保証しません。利用者は、本ソフトウェアによる操作後、必ず各証券会社のウェブサイトにログインし、意図どおりに申込が行われたことを自身で確認してください。確認を怠ったことにより生じた損害について、提供者は一切の責任を負いません。</p>
+
+        <h4>7. 不具合対応</h4>
+        <p>提供者は、本ソフトウェアの不具合について、合理的な範囲で修正に努めます。ただし、修正の実施および時期を保証するものではありません。本ソフトウェアは「現状のまま（AS IS）」で提供されます。</p>
+
+        <h4>8. 免責事項</h4>
+        <p>提供者は、本ソフトウェアの使用により生じたいかなる損害（直接的、間接的、偶発的、特別、派生的損害を含む）についても、一切の責任を負いません。以下の場合を含みますが、これらに限定されません。</p>
+        <ul>
+          <li>IPO申込の成否、投資判断の結果</li>
+          <li>本ソフトウェアの不具合、動作不良、情報の誤り</li>
+          <li>出力された情報に基づく判断による損失</li>
+          <li>発注の失敗、遅延、重複</li>
+          <li>OSやブラウザ環境に起因する動作不良</li>
+          <li>証券会社サイトの仕様変更による機能停止</li>
+          <li>本ソフトウェアの使用に起因する証券口座のアクセス制限、凍結、利用停止</li>
+        </ul>
+
+        <h4>9. データの取り扱い</h4>
+        <ul>
+          <li>本ソフトウェアの処理は、外部サービス連携（Telegram通知等）を除き、利用者のPC上で完結します。提供者が管理するサーバーは存在せず、利用者のデータが提供者に送信されることはありません。</li>
+          <li>データベース、認証情報、設定ファイル等は全てローカルPC上にのみ保存されます。</li>
+          <li>証券口座のID・パスワードはローカルPC内にのみ保存され、証券会社へのログイン時およびパスワード管理ツール（Bitwarden）への自動入力に利用されます。</li>
+          <li>保存されるパスワードはFernet暗号化（AES-128-CBC）により暗号化されます。</li>
+          <li>Telegram通知を利用する場合、通知内容はTelegram社のサーバーを経由します。</li>
+        </ul>
+
+        <h4>10. スクレイピングに関する注意</h4>
+        <p>本ソフトウェアは、IPO情報の取得にウェブスクレイピング技術を使用します。</p>
+        <ul>
+          <li>スクレイピング対象サイトへの過度なアクセスを避けるため、リクエスト間隔を設けています。</li>
+          <li>対象サイトの利用規約やrobots.txtを確認し、自己責任でご利用ください。</li>
+          <li>対象サイトの構造変更により、情報取得が正常に行えなくなる場合があります。</li>
+        </ul>
+
+        <h4>11. サポート</h4>
+        <p>購入者には以下の範囲でサポートを提供します。</p>
+        <ul>
+          <li>対象: 導入方法、操作方法、機能に関する質問</li>
+          <li>手段: メールまたはお問い合わせフォーム</li>
+          <li>期間: 本ソフトウェアの提供終了まで</li>
+        </ul>
+        <p>全ての問題の解決を保証するものではありません。回答までに時間を要する場合があります。PC本体、OS、他のソフトウェア、投資全般に関するご相談は対象外です。</p>
+
+        <h4>12. 規約違反時の措置</h4>
+        <p>利用者が本規約に違反した場合、提供者は事前の警告なく、直ちに本契約を解除することができます。</p>
+
+        <h4>13. アップデート</h4>
+        <p>本ソフトウェアは自動アップデート機能を備えています。アップデートの適用は利用者の任意です。アップデートにより機能が変更される場合があります。</p>
+
+        <h4>14. 規約の変更</h4>
+        <p>提供者は、本規約を予告なく変更する権利を有します。変更後の規約は、本ソフトウェアのアップデート時に適用されます。</p>
+
+        <h4>15. 管轄裁判所</h4>
+        <p>本規約に関する紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== プライバシーポリシーモーダル ========== -->
+  <div class="modal-overlay" id="privacyModal">
+    <div class="modal-box modal-box-wide">
+      <button class="modal-close" onclick="document.getElementById('privacyModal').classList.remove('open')" aria-label="閉じる">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-header">
+        <h3>プライバシーポリシー</h3>
+        <p>最終更新日: 2026年3月20日</p>
+      </div>
+      <div class="tokushoho-content legal-content">
+        <h4>1. 収集する情報</h4>
+        <p>当方は以下の情報を収集します。</p>
+        <ul>
+          <li><strong>メールアドレス</strong>: 無料トライアルの申し込み、ライセンスキーの送付、お問い合わせへの返信に使用します。</li>
+          <li><strong>お問い合わせ内容</strong>: お名前、メールアドレス、メッセージ内容をサポート対応のために収集します。</li>
+          <li><strong>決済情報</strong>: クレジットカード情報はStripe社が管理し、当方が直接保持することはありません。</li>
+        </ul>
+
+        <h4>2. 情報の利用目的</h4>
+        <ul>
+          <li>本ソフトウェアのダウンロードリンク・ライセンスキーの送付</li>
+          <li>お問い合わせへの対応</li>
+          <li>本ソフトウェアに関する重要なお知らせの送付</li>
+        </ul>
+
+        <h4>3. 証券会社のログイン情報について</h4>
+        <p>証券会社のID・パスワード等の認証情報は、すべてユーザーのPC内にのみ暗号化保存（Fernet / AES-128-CBC）されます。当方のサーバーに送信・保存されることはありません。</p>
+
+        <h4>4. 第三者への提供</h4>
+        <p>当方は収集した個人情報を、以下の場合を除き第三者に提供しません。</p>
+        <ul>
+          <li>ユーザーの同意がある場合</li>
+          <li>法令に基づく場合</li>
+        </ul>
+
+        <h4>5. 利用する外部サービス</h4>
+        <ul>
+          <li><strong>Stripe</strong>: 決済処理（<a href="https://stripe.com/jp/privacy" target="_blank" rel="noopener">Stripeプライバシーポリシー</a>）</li>
+          <li><strong>Resend</strong>: メール送信（<a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resendプライバシーポリシー</a>）</li>
+          <li><strong>Telegram</strong>: 申込指示・結果通知の送受信。通信内容はTelegram社のサーバーを経由します。</li>
+          <li><strong>Bitwarden</strong>: 認証情報の管理。データはユーザーのBitwardenアカウント内に保存されます。</li>
+        </ul>
+
+        <h4>6. データの保管</h4>
+        <p>メールアドレス等の個人情報は、利用目的に必要な期間保管し、不要になった時点で適切に削除します。</p>
+
+        <h4>7. お問い合わせ</h4>
+        <p>プライバシーに関するお問い合わせは support@oneclick-ipo.com までご連絡ください。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 特定商取引法モーダル ========== -->
+  <div class="modal-overlay" id="tokushohoModal">
+    <div class="modal-box modal-box-wide">
+      <button class="modal-close" onclick="document.getElementById('tokushohoModal').classList.remove('open')" aria-label="閉じる">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="modal-header">
+        <h3>特定商取引法に基づく表記</h3>
+      </div>
+      <div class="tokushoho-content">
+        <table class="tokushoho-table">
+          <tr><th>販売事業者</th><td>シンプルギア</td></tr>
+          <tr><th>運営責任者</th><td>請求があった場合、遅滞なく開示いたします</td></tr>
+          <tr><th>所在地</th><td>請求があった場合、遅滞なく開示いたします</td></tr>
+          <tr><th>電話番号</th><td>請求があった場合、遅滞なく開示いたします</td></tr>
+          <tr><th>メールアドレス</th><td>support@oneclick-ipo.com</td></tr>
+          <tr><th>販売価格</th><td>スタンダード：19,800円（税込）/ プロ：29,800円（税込）</td></tr>
+          <tr><th>支払い方法</th><td>クレジットカード（Stripe経由）</td></tr>
+          <tr><th>商品の引渡し時期</th><td>決済完了後、メールにてダウンロードリンクおよびライセンスキーを送付いたします（通常即時〜24時間以内）</td></tr>
+          <tr><th>返品・キャンセル</th><td>ご購入から30日以内であれば、理由を問わず全額返金いたします。返金をご希望の場合は、メールにてご連絡ください。</td></tr>
+          <tr><th>動作環境</th><td>Windows 10 / 11</td></tr>
+        </table>
+      </div>
     </div>
   </div>
 
