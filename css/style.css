@@ -1567,6 +1567,13 @@ h1, h2, h3, h4 {
   gap: 2px;
   margin-bottom: 32px;
 }
+.price-original {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  margin-right: 8px;
+}
 .price-currency {
   font-size: 24px;
   font-weight: 700;
