@@ -1788,6 +1788,27 @@ h1, h2, h3, h4 {
   text-decoration: underline;
 }
 
+/* ---------- Developer Note ---------- */
+.developer-note {
+  padding: 40px 0;
+  background: var(--bg-dark);
+}
+.dev-note-box {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 32px;
+  background: rgba(79, 70, 229, 0.04);
+  border: 1px solid rgba(79, 70, 229, 0.12);
+  border-radius: var(--radius-lg);
+}
+.dev-note-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  font-style: italic;
+}
+
 /* ---------- Final CTA ---------- */
 .final-cta {
   padding: 80px 0 120px;
