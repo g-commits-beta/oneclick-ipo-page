@@ -1,0 +1,12 @@
+title: ワンクリIPO ブログ
+description: IPO投資の知識・当選のコツ・ツール活用法
+url: https://oneclick-ipo.com
+baseurl: ""
+permalink: /blog/:year/:month/:day/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+exclude:
+  - worker
+  - MACHINE_ID_BINDING_SPEC.md
+  - node_modules
