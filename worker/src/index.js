@@ -438,7 +438,8 @@ function buildLicenseEmailHtml(licenseKey, planName, downloadUrl) {
         <code style="color:#A78BFA;font-size:18px;font-weight:700;letter-spacing:1px;">${licenseKey}</code>
       </div>
 
-      <p style="color:#9CA3AF;font-size:13px;margin:0 0 24px;">このキーをワンクリIPOアプリに入力すると、全機能がご利用いただけます。</p>
+      <p style="color:#9CA3AF;font-size:13px;margin:0 0 12px;">このキーをワンクリIPOアプリに入力すると、全機能がご利用いただけます。</p>
+      <p style="color:#F59E0B;font-size:13px;margin:0 0 24px;">※ Windows PC専用です。PCからダウンロードしてください。</p>
 
       <a href="${downloadUrl}"
          style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;text-decoration:none;border-radius:12px;font-size:16px;font-weight:700;">
@@ -479,7 +480,8 @@ function buildTrialEmailHtml(downloadUrl, siteUrl) {
       <h1 style="color:#fff;font-size:24px;margin:0 0 8px;">ワンクリIPO</h1>
       <p style="color:#9CA3AF;font-size:14px;margin:0 0 32px;">無料トライアルをお申し込みいただきありがとうございます。</p>
 
-      <p style="color:#F9FAFB;font-size:16px;margin:0 0 24px;">下のボタンからツールをダウンロードしてください。</p>
+      <p style="color:#F9FAFB;font-size:16px;margin:0 0 12px;">下のボタンからツールをダウンロードしてください。</p>
+      <p style="color:#F59E0B;font-size:13px;margin:0 0 24px;">※ Windows PC専用です。PCからダウンロードしてください。</p>
 
       <a href="${downloadUrl}"
          style="display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;text-decoration:none;border-radius:12px;font-size:16px;font-weight:700;">
