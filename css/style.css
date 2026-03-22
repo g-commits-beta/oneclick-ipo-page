@@ -385,38 +385,18 @@ h1, h2, h3, h4 {
   line-height: 1.8;
 }
 
-/* Hero broker chips */
-.hero-brokers {
+/* Hero broker compact */
+.hero-brokers-compact {
   margin-bottom: 32px;
-}
-.hero-brokers-label {
-  display: block;
   font-size: 13px;
-  font-weight: 600;
   color: var(--text-muted);
-  margin-bottom: 10px;
-  letter-spacing: 0.05em;
+  line-height: 1.6;
 }
-.hero-brokers-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.broker-chip {
-  display: inline-block;
-  padding: 6px 14px;
-  background: rgba(0,0,0,0.03);
-  border: 1px solid var(--border-light);
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-.broker-chip.more {
-  background: rgba(79, 70, 229, 0.08);
-  border-color: rgba(79, 70, 229, 0.2);
-  color: var(--primary-light);
+.hero-brokers-compact .hero-brokers-label {
   font-weight: 600;
+}
+.hero-brokers-compact .hero-brokers-text {
+  font-weight: 400;
 }
 
 .hero-actions {
