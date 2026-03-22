@@ -19,8 +19,8 @@ export default {
       return handleStripeWebhook(request, env);
     }
 
-    // GET /verify → ライセンス検証
-    if (request.method === 'GET' && path === '/verify') {
+    // POST /verify → ライセンス検証（マシンID紐づけ）
+    if (request.method === 'POST' && path === '/verify') {
       return handleVerify(request, env);
     }
 
@@ -268,34 +268,59 @@ async function handleStripeWebhook(request, env) {
 }
 
 // ============================================================
-// ライセンス検証エンドポイント
+// ライセンス検証エンドポイント（マシンID紐づけ対応）
 // ============================================================
 async function handleVerify(request, env) {
-  const url = new URL(request.url);
-  const key = url.searchParams.get('key');
+  const { key, machine_id } = await request.json();
 
-  if (!key) {
-    return jsonResponse({ valid: false, error: 'Missing key' }, 400, env);
+  if (!key || !machine_id) {
+    return jsonResponse({ valid: false, error: 'Missing key or machine_id' }, 400, env);
   }
 
   const data = await env.LICENSES.get(`license:${key}`);
   if (!data) {
-    return jsonResponse({ valid: false }, 200, env);
+    return jsonResponse({ valid: false, error: 'invalid_key' }, 200, env);
   }
 
   const license = JSON.parse(data);
 
-  // 初回検証時にactivatedをマーク
+  // machine_ids配列を初期化（既存データとの互換性）
+  if (!license.machine_ids) {
+    license.machine_ids = [];
+  }
+
+  // マシンID確認
+  const alreadyRegistered = license.machine_ids.includes(machine_id);
+
+  if (!alreadyRegistered) {
+    // 上限チェック（最大2台）
+    if (license.machine_ids.length >= 2) {
+      return jsonResponse({
+        valid: false,
+        error: 'device_limit_reached',
+        message: 'このライセンスキーは既に2台のPCで使用されています。別のPCで使用するにはサポートにご連絡ください。',
+        activated_devices: license.machine_ids.length,
+      }, 200, env);
+    }
+
+    // 新しいマシンIDを追加
+    license.machine_ids.push(machine_id);
+  }
+
+  // 初回アクティベーション
   if (!license.activated) {
     license.activated = true;
     license.activatedAt = new Date().toISOString();
-    await env.LICENSES.put(`license:${key}`, JSON.stringify(license));
   }
+
+  // KV更新
+  await env.LICENSES.put(`license:${key}`, JSON.stringify(license));
 
   return jsonResponse({
     valid: true,
     plan: license.plan,
     email: license.email,
+    activated_devices: license.machine_ids.length,
   }, 200, env);
 }
 
