@@ -441,11 +441,11 @@ h1, h2, h3, h4 {
 /* Hero Visual - Mockup */
 .hero-visual {
   position: absolute;
-  right: -40px;
+  right: 24px;
   top: 50%;
   transform: translateY(-50%);
-  width: 55%;
-  max-width: 720px;
+  width: 48%;
+  max-width: 640px;
   z-index: 1;
 }
 
