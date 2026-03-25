@@ -213,15 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
   createParticles();
 
   // ---------- Typing effect for hero (optional enhancement) ----------
-  // Subtle parallax on hero mockup
-  const heroVisual = document.querySelector('.hero-visual');
-  if (heroVisual && window.innerWidth > 1024) {
-    window.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 10;
-      const y = (e.clientY / window.innerHeight - 0.5) * 10;
-      heroVisual.style.transform = `translateY(-50%) translate(${x}px, ${y}px)`;
-    }, { passive: true });
-  }
 });
 
 // ---------- Trial form handler (global) ----------
