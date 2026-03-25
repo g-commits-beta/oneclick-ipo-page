@@ -384,7 +384,7 @@ h1, h2, h3, h4 {
   font-size: clamp(16px, 2vw, 20px);
   color: var(--text-secondary);
   max-width: 600px;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
   line-height: 1.8;
 }
 
