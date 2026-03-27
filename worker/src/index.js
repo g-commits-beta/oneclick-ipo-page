@@ -221,17 +221,11 @@ async function handleStripeWebhook(request, env) {
     return new Response('Already processed', { status: 200 });
   }
 
-  // 決済額からプラン判定（JPY: amount_total は円単位）
+  // 決済額の確認（JPY: amount_total は円単位、買い切り ¥19,800）
   const amount = session.amount_total;
-  let plan;
-  if (amount === 2980000 || amount === 29800) {
-    plan = 'pro';
-  } else if (amount === 1980000 || amount === 19800) {
-    plan = 'standard';
-  } else {
-    // 金額がマッチしない場合、Stripe Priceのmetadataまたはline_itemsで判定
-    plan = 'standard';
-    console.warn(`Unexpected amount: ${amount}, defaulting to standard`);
+  const plan = 'standard';
+  if (amount !== 19800) {
+    console.warn(`Unexpected amount: ${amount}, expected 19800`);
   }
 
   const email = session.customer_details?.email || session.customer_email;
@@ -392,8 +386,6 @@ function generateLicenseKey() {
 // ライセンスメール送信
 // ============================================================
 async function sendLicenseEmail(email, licenseKey, plan, env) {
-  const planName = plan === 'pro' ? 'プロ' : 'スタンダード';
-
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -403,8 +395,8 @@ async function sendLicenseEmail(email, licenseKey, plan, env) {
     body: JSON.stringify({
       from: `${env.FROM_NAME} <${env.FROM_EMAIL}>`,
       to: [email],
-      subject: `【ワンクリIPO】${planName}プラン ライセンスキーのお届け`,
-      html: buildLicenseEmailHtml(licenseKey, planName, env.DOWNLOAD_URL),
+      subject: '【ワンクリIPO】ライセンスキーのお届け',
+      html: buildLicenseEmailHtml(licenseKey, env.DOWNLOAD_URL),
     }),
   });
 
@@ -417,7 +409,7 @@ async function sendLicenseEmail(email, licenseKey, plan, env) {
 // ============================================================
 // ライセンスメール HTML
 // ============================================================
-function buildLicenseEmailHtml(licenseKey, planName, downloadUrl) {
+function buildLicenseEmailHtml(licenseKey, downloadUrl) {
   return `
 <!DOCTYPE html>
 <html>
@@ -427,11 +419,6 @@ function buildLicenseEmailHtml(licenseKey, planName, downloadUrl) {
     <div style="background:#111827;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:40px 32px;text-align:center;">
       <h1 style="color:#fff;font-size:24px;margin:0 0 8px;">ワンクリIPO</h1>
       <p style="color:#9CA3AF;font-size:14px;margin:0 0 32px;">ご購入ありがとうございます！</p>
-
-      <div style="background:rgba(79,70,229,0.1);border:1px solid rgba(79,70,229,0.2);border-radius:12px;padding:20px;margin-bottom:24px;">
-        <p style="color:#9CA3AF;font-size:13px;margin:0 0 4px;">ご購入プラン</p>
-        <p style="color:#818CF8;font-size:18px;font-weight:700;margin:0;">${planName}プラン</p>
-      </div>
 
       <p style="color:#F9FAFB;font-size:14px;margin:0 0 12px;">あなたのライセンスキー</p>
       <div style="background:#0B0F1A;border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:16px;margin-bottom:24px;">
