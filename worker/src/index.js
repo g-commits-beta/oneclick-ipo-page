@@ -14,9 +14,9 @@ export default {
       return handleTrial(request, env);
     }
 
-    // POST /webhook → Stripe webhook
+    // POST /webhook → LemonSqueezy webhook
     if (request.method === 'POST' && path === '/webhook') {
-      return handleStripeWebhook(request, env);
+      return handleLemonSqueezyWebhook(request, env);
     }
 
     // POST /verify → ライセンス検証（マシンID紐づけ）
@@ -189,65 +189,64 @@ function buildContactAckEmailHtml(name, message) {
 }
 
 // ============================================================
-// Stripe Webhook handler
+// LemonSqueezy Webhook handler
 // ============================================================
-async function handleStripeWebhook(request, env) {
-  const signature = request.headers.get('stripe-signature');
+async function handleLemonSqueezyWebhook(request, env) {
+  const signature = request.headers.get('x-signature');
   if (!signature) {
     return new Response('Missing signature', { status: 400 });
   }
 
   const body = await request.text();
 
-  // Stripe署名検証
-  const isValid = await verifyStripeSignature(body, signature, env.STRIPE_WEBHOOK_SECRET);
+  // HMAC-SHA256署名検証
+  const isValid = await verifyLemonSqueezySignature(body, signature, env.LEMONSQUEEZY_WEBHOOK_SECRET);
   if (!isValid) {
     return new Response('Invalid signature', { status: 400 });
   }
 
-  const event = JSON.parse(body);
+  const payload = JSON.parse(body);
+  const eventName = payload.meta?.event_name;
 
-  if (event.type !== 'checkout.session.completed') {
-    // 対象外イベントは200で返す（Stripeのリトライを防ぐ）
+  if (eventName !== 'order_created') {
+    // 対象外イベントは200で返す（リトライを防ぐ）
     return new Response('OK', { status: 200 });
   }
 
-  const session = event.data.object;
-  const sessionId = session.id;
+  const order = payload.data?.attributes;
+  const orderId = payload.data?.id;
 
-  // 冪等性チェック: 同じセッションの重複webhookを防ぐ
-  const existingKey = await env.LICENSES.get(`session:${sessionId}`);
+  if (!order || order.status !== 'paid') {
+    return new Response('OK', { status: 200 });
+  }
+
+  // 冪等性チェック: 同じ注文の重複webhookを防ぐ
+  const existingKey = await env.LICENSES.get(`order:${orderId}`);
   if (existingKey) {
     return new Response('Already processed', { status: 200 });
   }
 
-  // 決済額の確認（JPY: amount_total は円単位、買い切り ¥19,800）
-  const amount = session.amount_total;
-  const plan = 'standard';
-  if (amount !== 19800) {
-    console.warn(`Unexpected amount: ${amount}, expected 19800`);
-  }
-
-  const email = session.customer_details?.email || session.customer_email;
+  const email = order.user_email;
   if (!email) {
-    console.error('No email found in session:', sessionId);
+    console.error('No email found in order:', orderId);
     return new Response('No email', { status: 400 });
   }
 
   // ライセンスキー生成
   const licenseKey = generateLicenseKey();
+  const plan = 'standard';
 
   // KVに保存
   await env.LICENSES.put(`license:${licenseKey}`, JSON.stringify({
     plan,
     email,
-    sessionId,
+    orderId,
     createdAt: new Date().toISOString(),
     activated: false,
   }));
 
-  // セッション→キーのマッピング（冪等性用）
-  await env.LICENSES.put(`session:${sessionId}`, licenseKey);
+  // 注文ID→キーのマッピング（冪等性用）
+  await env.LICENSES.put(`order:${orderId}`, licenseKey);
 
   // ライセンスキーをメールで送信
   try {
@@ -255,7 +254,6 @@ async function handleStripeWebhook(request, env) {
   } catch (e) {
     console.error('Failed to send license email:', e);
     // メール送信失敗でも決済は成功しているので200を返す
-    // 管理者が手動でキーを通知する必要がある
   }
 
   return new Response('OK', { status: 200 });
@@ -319,25 +317,9 @@ async function handleVerify(request, env) {
 }
 
 // ============================================================
-// Stripe署名検証 (HMAC-SHA256)
+// LemonSqueezy署名検証 (HMAC-SHA256)
 // ============================================================
-async function verifyStripeSignature(payload, header, secret) {
-  const parts = header.split(',').reduce((acc, part) => {
-    const [key, value] = part.split('=');
-    acc[key] = value;
-    return acc;
-  }, {});
-
-  const timestamp = parts['t'];
-  const signature = parts['v1'];
-
-  if (!timestamp || !signature) return false;
-
-  // タイムスタンプが5分以上古い場合は拒否
-  const now = Math.floor(Date.now() / 1000);
-  if (now - parseInt(timestamp) > 300) return false;
-
-  const signedPayload = `${timestamp}.${payload}`;
+async function verifyLemonSqueezySignature(payload, signature, secret) {
   const key = await crypto.subtle.importKey(
     'raw',
     new TextEncoder().encode(secret),
@@ -346,7 +328,7 @@ async function verifyStripeSignature(payload, header, secret) {
     ['sign']
   );
 
-  const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(signedPayload));
+  const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(payload));
   const expectedSig = Array.from(new Uint8Array(sig))
     .map(b => b.toString(16).padStart(2, '0'))
     .join('');
