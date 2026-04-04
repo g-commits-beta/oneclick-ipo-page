@@ -4,7 +4,7 @@ compatibility_date = "2024-01-01"
 
 [vars]
 # ダウンロードURL（GitHub Releasesの非公開URLに差し替え）
-DOWNLOAD_URL = "https://github.com/g-commits-beta/ipo-releases/releases/download/v1.0.18/ipo-manager.exe"
+DOWNLOAD_URL = "https://github.com/g-commits-beta/ipo-releases/releases/download/v1.0.20/ipo-manager.exe"
 # 送信元メールアドレス（本番では独自ドメインに変更）
 FROM_EMAIL = "support@oneclick-ipo.com"
 FROM_NAME = "ワンクリIPO"
