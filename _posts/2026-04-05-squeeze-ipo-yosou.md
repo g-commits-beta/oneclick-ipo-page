@@ -4,7 +4,12 @@ title: "SQUEEZE（558A）IPO初値予想｜急成長ホテルDXだが吸収40億
 description: "2026年4月22日上場予定のSQUEEZE（558A）。売上+75%の急成長だが吸収金額40億円と重い。各サイトの評価と初値予想、申込判断のポイントを解説。"
 date: 2026-04-05
 tags: [IPO初値予想]
+image: https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=630&fit=crop
+image_credit: "Photo by <a href='https://unsplash.com/@edgr' target='_blank'>Edvin Johansson</a> on Unsplash"
 ---
+
+* TOC
+{:toc}
 
 2026年4月22日に東証グロースへ上場予定の**SQUEEZE（スクイーズ・558A）**。AIを活用したホテル運営DXプラットフォームを展開する企業で、インバウンド回復の追い風を受けて**売上+75%の急成長**を遂げています。
 

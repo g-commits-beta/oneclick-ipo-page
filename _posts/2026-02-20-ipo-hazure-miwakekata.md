@@ -4,7 +4,12 @@ title: "もうIPOは時代遅れ？儲からないIPOの見分け方と、申し
 description: "2026年はIPOの公開価格割れが急増。もう儲からない？データで検証し、はずれIPOの特徴と、どのランクまで申し込むべきかを解説します。"
 date: 2026-02-20
 tags: [IPO分析]
+image: https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=630&fit=crop
+image_credit: "Photo by <a href='https://unsplash.com/@m_b_m' target='_blank'>m.</a> on Unsplash"
 ---
+
+* TOC
+{:toc}
 
 「IPOって、もう儲からなくない？」
 

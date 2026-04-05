@@ -4,7 +4,12 @@ title: "バトンズ（554A）IPO初値予想｜超小型×国策テーマで期
 description: "2026年4月21日上場予定のバトンズ（554A）。M&Aプラットフォーム×吸収5億円の超小型案件。庶民のIPOはA評価。各サイトの評価と初値予想を解説。"
 date: 2026-04-05
 tags: [IPO初値予想]
+image: https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=630&fit=crop
+image_credit: "Photo by <a href='https://unsplash.com/@jasongoodman_youxventures' target='_blank'>Jason Goodman</a> on Unsplash"
 ---
+
+* TOC
+{:toc}
 
 2026年4月21日に東証グロースへ上場予定の**バトンズ（554A）**。中小企業のM&Aマッチングプラットフォームを運営する企業で、吸収金額わずか約5億円の**超小型案件**です。
 

@@ -4,7 +4,12 @@ title: "IPO当選確率を上げる最も確実な方法｜複数証券会社へ
 description: "IPOの当選確率は約1〜2%。当選確率を上げる最も確実な方法は「複数の証券会社から申し込むこと」です。具体的な戦略と、手間を減らすコツを解説します。"
 date: 2026-03-08
 tags: [IPO入門]
+image: https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=1200&h=630&fit=crop
+image_credit: "Photo by <a href='https://unsplash.com/@bastian_riccardi' target='_blank'>Bastian Riccardi</a> on Unsplash"
 ---
+
+* TOC
+{:toc}
 
 IPOに申し込んでも「全然当たらない」という声をよく聞きます。実際、IPOの当選確率は**1社あたり約1〜2%**。100回申し込んで1〜2回当たるかどうかという世界です。
 

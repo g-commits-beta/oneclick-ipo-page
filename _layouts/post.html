@@ -14,12 +14,34 @@
   <title>{{ page.title }} | ワンクリIPO ブログ</title>
   <meta name="description" content="{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <!-- OGP -->
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:site_name" content="ワンクリIPO ブログ">
   <meta property="og:locale" content="ja_JP">
+  {% if page.image %}<meta property="og:image" content="{{ page.image | absolute_url }}">{% endif %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="{% if page.image %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}">
+  {% if page.image %}<meta name="twitter:image" content="{{ page.image | absolute_url }}">{% endif %}
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ page.title | jsonify }},
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "description": {{ page.description | default: page.excerpt | strip_html | truncate: 160 | jsonify }},
+    "url": "{{ page.url | absolute_url }}",
+    "author": { "@type": "Organization", "name": "ワンクリIPO" },
+    "publisher": { "@type": "Organization", "name": "ワンクリIPO", "url": "https://oneclick-ipo.com" }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -169,6 +191,84 @@
       color: var(--text-secondary);
     }
 
+    /* 目次 */
+    .article-body #markdown-toc {
+      background: #f8fafc;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 20px 20px 20px 40px;
+      margin: 0 0 32px;
+      font-size: 14px;
+      line-height: 2;
+    }
+    .article-body #markdown-toc::before {
+      content: "目次";
+      display: block;
+      font-weight: 700;
+      font-size: 15px;
+      margin: 0 0 8px -16px;
+      color: var(--text);
+    }
+
+    /* コールアウトボックス */
+    .article-body .info-box, .article-body .info-box > blockquote {
+      border-left: 4px solid #3B82F6;
+      background: rgba(59,130,246,0.05);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      color: var(--text);
+    }
+    .article-body .warning-box, .article-body .warning-box > blockquote {
+      border-left: 4px solid #F59E0B;
+      background: rgba(245,158,11,0.05);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      color: var(--text);
+    }
+    .article-body .success-box, .article-body .success-box > blockquote {
+      border-left: 4px solid #10B981;
+      background: rgba(16,185,129,0.05);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      color: var(--text);
+    }
+
+    /* 画像キャプション */
+    .article-body .image-caption {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: -16px;
+      margin-bottom: 24px;
+    }
+
+    /* アイキャッチ画像 */
+    .article-hero {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-bottom: 32px;
+    }
+
+    /* 読了時間 */
+    .reading-time {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* 画像出典 */
+    .image-credit {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: -20px;
+      margin-bottom: 20px;
+    }
+
     /* CTA box */
     .article-cta {
       margin: 48px 0;
@@ -239,8 +339,11 @@
     <div class="article-meta">
       <time>{{ page.date | date: "%Y年%m月%d日" }}</time>
       {% if page.tags %}<span class="article-tag">{{ page.tags | first }}</span>{% endif %}
+      {% assign words = content | number_of_words %}{% assign minutes = words | divided_by: 400 | plus: 1 %}<span class="reading-time">約{{ minutes }}分で読めます</span>
     </div>
     <h1 class="article-title">{{ page.title }}</h1>
+    {% if page.image %}<img src="{{ page.image }}" alt="{{ page.title }}" class="article-hero">
+    {% if page.image_credit %}<p class="image-credit">{{ page.image_credit }}</p>{% endif %}{% endif %}
     <div class="article-body">
       {{ content }}
 
@@ -255,5 +358,9 @@
   <footer class="blog-footer">
     <p>&copy; 2026 ワンクリIPO / <a href="/">トップページ</a></p>
   </footer>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
 </body>
 </html>

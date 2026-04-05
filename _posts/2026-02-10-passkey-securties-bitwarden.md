@@ -4,7 +4,12 @@ title: "パスキーとは？証券会社のログインが変わる新認証方
 description: "SBI証券・楽天証券・マネックス証券など主要証券会社がパスキー認証を導入。パスキーの仕組み・対応証券会社一覧・Bitwardenを使った設定手順をわかりやすく解説。"
 date: 2026-02-10
 tags: [セキュリティ]
+image: https://images.unsplash.com/photo-1633265486064-086b219458ec?w=1200&h=630&fit=crop
+image_credit: "Photo by <a href='https://unsplash.com/@flyd2069' target='_blank'>FlyD</a> on Unsplash"
 ---
+
+* TOC
+{:toc}
 
 「パスキーを設定してください」
 

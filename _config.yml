@@ -6,6 +6,9 @@ permalink: /blog/:year/:month/:day/:title/
 markdown: kramdown
 kramdown:
   input: GFM
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
 exclude:
   - worker
   - MACHINE_ID_BINDING_SPEC.md

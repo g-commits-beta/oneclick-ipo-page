@@ -4,7 +4,12 @@ title: "【2026年版】IPO投資の始め方｜初心者でも10万円から始
 description: "IPO投資は初心者でも始めやすく、10万円程度の資金があればチャレンジ可能。口座開設から申し込み、当選後の流れまで、IPOの始め方をわかりやすく解説します。"
 date: 2026-03-01
 tags: [IPO入門]
+image: https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=1200&h=630&fit=crop
+image_credit: "Photo by <a href='https://unsplash.com/@precondo' target='_blank'>Precondo CA</a> on Unsplash"
 ---
+
+* TOC
+{:toc}
 
 「IPO投資って難しそう...」と思っていませんか？ 実は、IPO投資は**株の知識がなくても始められる**数少ない投資手法のひとつです。
 
