@@ -85,25 +85,42 @@ layout: null
       gap: 24px;
     }
     .post-card {
-      display: block;
-      padding: 28px;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
       background: #fff;
       border: 1px solid var(--border-light);
       border-radius: 16px;
       transition: all 0.3s ease;
+      overflow: hidden;
     }
     .post-card:hover {
       border-color: rgba(79, 70, 229, 0.3);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0,0,0,0.06);
     }
+    .post-card-thumb {
+      flex-shrink: 0;
+      width: 180px;
+      height: 120px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: linear-gradient(135deg, rgba(79,70,229,0.08), rgba(124,58,237,0.08));
+    }
+    .post-card-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .post-card-meta {
       font-size: 13px;
       color: var(--text-muted);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .post-card-tag {
       display: inline-block;
@@ -115,16 +132,34 @@ layout: null
       color: var(--primary-light);
     }
     .post-card-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 800;
       color: var(--text);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .post-card-excerpt {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--text-secondary);
-      line-height: 1.8;
+      line-height: 1.7;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    @media (max-width: 600px) {
+      .post-card {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .post-card-thumb {
+        width: 100%;
+        height: 160px;
+      }
     }
     .blog-footer {
       background: #F1F5F9;
@@ -157,12 +192,15 @@ layout: null
     <div class="post-list">
       {% for post in site.posts %}
       <a href="{{ post.url }}" class="post-card">
-        <div class="post-card-meta">
-          <time>{{ post.date | date: "%Y年%m月%d日" }}</time>
-          {% if post.tags %}<span class="post-card-tag">{{ post.tags | first }}</span>{% endif %}
+        {% if post.image %}<img src="{{ post.image }}" alt="{{ post.title }}" class="post-card-thumb" loading="lazy">{% endif %}
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            <time>{{ post.date | date: "%Y年%m月%d日" }}</time>
+            {% if post.tags %}<span class="post-card-tag">{{ post.tags | first }}</span>{% endif %}
+          </div>
+          <h2 class="post-card-title">{{ post.title }}</h2>
+          <p class="post-card-excerpt">{{ post.description | default: post.excerpt | strip_html | truncate: 120 }}</p>
         </div>
-        <h2 class="post-card-title">{{ post.title }}</h2>
-        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
       </a>
       {% endfor %}
     </div>
